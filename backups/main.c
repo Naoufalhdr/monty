@@ -1,6 +1,5 @@
 #include "monty.h"
 
-int flag = 0;
 
 /**
  * main - main function to run monty
