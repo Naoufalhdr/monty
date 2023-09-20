@@ -52,4 +52,7 @@ void add(stack_t **top, unsigned int l_num);
 /* Execute */
 void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l);
 
+/* helpers */
+int _isdigit(char *str);
+
 #endif /* MONTY_H */

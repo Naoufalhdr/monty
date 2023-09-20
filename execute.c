@@ -22,7 +22,7 @@ void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l)
 	if (strncmp(opcode, "push", strlen("push")) == 0)
 	{
 		/* Validate that 'data' is provided and is a valid integer */
-		if (data == NULL || !isdigit(data[0]) || data[0] == '-')
+		if (data == NULL || strlen(data) == 0 || !_isdigit(data))
 		{
 			fprintf(stderr, "L%u: usage: push integer\n", l);
 			exit(EXIT_FAILURE);
