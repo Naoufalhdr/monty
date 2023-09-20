@@ -74,3 +74,22 @@ void rotl(stack_t **top, unsigned int l_num)
 		prev = prev->prev;
 	}
 }
+
+/**
+ * rotr - rotates the stack to the bottom.
+ * @top: A pointer to the top of the stack.
+ * @l_num: The current line number being executed.
+ */
+void rotr(stack_t **top, unsigned int l_num)
+{
+	stack_t *current;
+	(void) l_num;
+
+	current = *top;
+	while (current->prev != NULL)
+		current = current->prev;
+
+	push(top, l_num, current->n);
+	current->next->prev = NULL;
+	free(current);
+}
