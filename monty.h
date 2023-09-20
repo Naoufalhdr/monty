@@ -44,6 +44,7 @@ void push(stack_t **top, unsigned int line_number, int data);
 void pall(stack_t **top, unsigned int line_number);
 void free_stack(stack_t *top);
 void pint(stack_t **top, unsigned int line_num);
+void pop(stack_t **top, unsigned int line_num);
 
 /* Execute */
 void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l);

@@ -73,6 +73,27 @@ void pint(stack_t **top, unsigned int line_num)
 }
 
 /**
+ * pop - removes the top element of the stack.
+ * @top: a pointer to the top of the stack.
+ * @line_num: is the current line number being executed.
+ */
+void pop(stack_t **top, unsigned int line_num)
+{
+	stack_t *current;
+
+	if (*top == NULL)
+	{
+		fprintf(stderr, "L<%u>: can't pop an empty stack\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+
+	current = *top;
+	*top = (*top)->prev;
+
+	free(current);
+}
+
+/**
  * free_stack - Frees a stack of nodes.
  * @top: A pointer to the top (head) of the stack.
  */
