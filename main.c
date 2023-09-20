@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 		opcode = strtok(line, " \t\n");
 		data = strtok(NULL, " \t\n");
 
-		if (!opcode)
+		if (!opcode || opcode[0] == '#')
 			continue; /* Empty line */
 		execute_opcode(opcode, data, &top, line_number);
 	}
