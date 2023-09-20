@@ -49,6 +49,7 @@ void pop(stack_t **top, unsigned int line_num);
 /* Stack calculations functions */
 void add(stack_t **top, unsigned int l_num);
 void sub(stack_t **top, unsigned int l_num);
+void divide(stack_t **top, unsigned int l_num);
 
 /* Stack manipulations functions */
 void nop(stack_t **top, unsigned int l_num);
