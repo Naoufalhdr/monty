@@ -46,7 +46,7 @@ void pall(stack_t **top, unsigned int line_number)
 	stack_t *current;
 	(void) line_number;
 
-	if (*top == NULL || line_number == 0)
+	if (*top == NULL)
 		return;
 
 	current = *top;
