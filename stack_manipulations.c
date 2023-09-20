@@ -30,3 +30,25 @@ void swap(stack_t **top, unsigned int l_num)
 	(*top)->n = (*top)->prev->n;
 	(*top)->prev->n = temp;
 }
+
+/**
+ * pstr - prints the string starting at the top of the stack.
+ * @top: A pointer to the top of the stack.
+ * @l_num: The current line number being executed.
+ */
+void pstr(stack_t **top, unsigned int l_num)
+{
+	stack_t *current;
+	(void) l_num;
+
+	if (*top == NULL)
+		printf("\n");
+
+	current = *top;
+	while (current && (current->n > 0 && current->n <= 127))
+	{
+		printf("%c", current->n);
+		current = current->prev;
+	}
+	printf("\n");
+}

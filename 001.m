@@ -1,6 +1,15 @@
 push 1
-pint
 push 2
-pint
 push 3
-pint
+push 4
+push 0
+push 110
+push 0
+push 108
+push 111
+push 111
+push 104
+push 99
+push 83
+pall
+pstr

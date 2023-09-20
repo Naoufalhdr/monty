@@ -14,7 +14,7 @@ void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l)
 		{"pall", pall}, {"pint", pint}, {"pop", pop},
 		{"add", add}, {"nop", nop}, {"swap", swap},
 		{"sub", sub}, {"div", divide}, {"mul", mul},
-		{"mod", mod}, {NULL, NULL}
+		{"mod", mod}, {"pstr", pstr}, {NULL, NULL}
 	};
 
 	/* Check if the opcode is push command */
