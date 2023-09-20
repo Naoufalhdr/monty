@@ -10,8 +10,7 @@ void add(stack_t **top, unsigned int l_num)
 	if (*top == NULL || (*top)->prev == NULL)
 	{
 		fprintf(stderr, "L<%u>: can't add, stack too short\n", l_num);
-		flag = 1;
-		return;
+		exit(EXIT_FAILURE);
 	}
 
 	(*top)->prev->n += (*top)->n;
