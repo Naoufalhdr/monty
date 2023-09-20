@@ -12,6 +12,7 @@ void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l)
 	int i = 0;
 	instruction_t opcodes[] = {
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 
