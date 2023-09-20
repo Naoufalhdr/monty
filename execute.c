@@ -11,13 +11,9 @@ void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l)
 {
 	int i = 0;
 	instruction_t opcodes[] = {
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"add", add},
-		{"nop", nop},
-		{"swap", swap},
-		{NULL, NULL}
+		{"pall", pall}, {"pint", pint}, {"pop", pop},
+		{"add", add}, {"nop", nop}, {"swap", swap},
+		{"sub", sub}, {NULL, NULL}
 	};
 
 	/* Check if the opcode is push command */
