@@ -14,6 +14,7 @@ void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"add", add},
 		{NULL, NULL}
 	};
 
