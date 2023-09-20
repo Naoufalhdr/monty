@@ -52,3 +52,25 @@ void pstr(stack_t **top, unsigned int l_num)
 	}
 	printf("\n");
 }
+
+/**
+ * rotl - rotates the stack to the top.
+ * @top: A pointer to the top of the stack.
+ * @l_num: The current line number being executed.
+ */
+void rotl(stack_t **top, unsigned int l_num)
+{
+	stack_t *current, *prev;
+	int temp;
+	(void) l_num;
+
+	current = prev = *top;
+	while (current->prev != NULL)
+	{
+		current = current->prev;
+		temp = prev->n;
+		prev->n = current->n;
+		current->n = temp;
+		prev = prev->prev;
+	}
+}
