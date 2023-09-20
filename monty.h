@@ -49,6 +49,9 @@ void pop(stack_t **top, unsigned int line_num);
 /* Stack calculations functions */
 void add(stack_t **top, unsigned int l_num);
 
+/* Stack manipulations functions */
+void nop(stack_t **top, unsigned int l_num);
+
 /* Execute */
 void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l);
 
