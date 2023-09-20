@@ -6,6 +6,8 @@
  * @data: The argument associated with the opcode (if applicable).
  * @top: a pointer to a pointer to the stack data structure.
  * @l: the line number corresponding to the opcode in the program.
+ *
+ * Return: 1 if success, otherwise 0.
  */
 int execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l)
 {
@@ -38,7 +40,7 @@ int execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l)
 			opcodes[i].f(top, l);
 			if (flag)
 				return (0);
-			return(1);
+			return (1);
 		}
 		i++;
 	}
