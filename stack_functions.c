@@ -15,8 +15,7 @@ void push(stack_t **top, unsigned int line_number, int data)
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		flag = 1;
-		return;
+		exit(EXIT_FAILURE);
 	}
 
 	new_node->n = data;
@@ -46,7 +45,7 @@ void pall(stack_t **top, unsigned int line_number)
 	stack_t *current;
 	(void) line_number;
 
-	if (*top == NULL)
+	if (*top == NULL || line_number == 0)
 		return;
 
 	current = *top;
@@ -67,8 +66,7 @@ void pint(stack_t **top, unsigned int line_num)
 	if (*top == NULL)
 	{
 		fprintf(stderr, "L<%u>: can't pint, stack empty\n", line_num);
-		flag = 1;
-		return;
+		exit(EXIT_FAILURE);
 	}
 
 	printf("%d\n", (*top)->n);
@@ -86,8 +84,7 @@ void pop(stack_t **top, unsigned int line_num)
 	if (*top == NULL)
 	{
 		fprintf(stderr, "L<%u>: can't pop an empty stack\n", line_num);
-		flag = 1;
-		return;
+		exit(EXIT_FAILURE);
 	}
 
 	current = *top;
