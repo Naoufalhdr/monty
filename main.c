@@ -1,5 +1,6 @@
 #include "monty.h"
 
+int flag = 0;
 
 /**
  * main - main function to run monty
@@ -40,14 +41,16 @@ int main(int argc, char *argv[])
 
 		if (!opcode || opcode[0] == '#')
 			continue; /* Empty line */
-		execute_opcode(opcode, data, &top, line_number);
+		if (!execute_opcode(opcode, data, &top, line_number))
+			break;
 	}
 
-	/* Close the monty file */
+	/* Close the monty file nd clean-up */
 	fclose(file);
-
 	free(line);
 	free_stack(&top);
 
+	if (flag)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

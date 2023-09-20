@@ -8,6 +8,8 @@
 #include <string.h>
 #include <ctype.h>
 
+/* Global variable */
+extern int flag;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -58,7 +60,7 @@ void nop(stack_t **top, unsigned int l_num);
 void swap(stack_t **top, unsigned int l_num);
 
 /* Execute */
-void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l);
+int execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l);
 
 /* helpers */
 int _isdigit(char *str);

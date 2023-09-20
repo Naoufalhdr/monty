@@ -7,7 +7,7 @@
  * @top: a pointer to a pointer to the stack data structure.
  * @l: the line number corresponding to the opcode in the program.
  */
-void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l)
+int execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l)
 {
 	int i = 0;
 	instruction_t opcodes[] = {
@@ -24,10 +24,10 @@ void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l)
 		if (data == NULL || strlen(data) == 0 || !_isdigit(data))
 		{
 			fprintf(stderr, "L%u: usage: push integer\n", l);
-			exit(EXIT_FAILURE);
+			return (0);
 		}
 		push(top, l, atoi(data));
-		return;
+		return (1);
 	}
 
 	while (opcodes[i].opcode != NULL)
@@ -36,12 +36,14 @@ void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l)
 		{
 			/* For opcodes that don't require an argument */
 			opcodes[i].f(top, l);
-			return;
+			if (flag)
+				return (0);
+			return(1);
 		}
 		i++;
 	}
 
 	/* Handle error: Opcode not found */
 	fprintf(stderr, "Error: Unknown opcode %s at line %u\n", opcode, l);
-	exit(EXIT_FAILURE);
+	return (0);
 }
