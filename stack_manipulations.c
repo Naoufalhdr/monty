@@ -1,17 +1,6 @@
 #include "monty.h"
 
 /**
- * nop - doesn't do anything.
- * @head: A pointer to the head of the stack/queue.
- * @l_num: The current line number being executed.
- */
-void nop(stack_t **head, unsigned int l_num)
-{
-	(void) l_num;
-	(void) head;
-}
-
-/**
  * swap - swaps the top two elements of the stack/queue.
  * @head: A pointer to the head of the stack/queue.
  * @l_num: The current line number being executed.
@@ -117,4 +106,30 @@ void rotr(stack_t **head, unsigned int l_num)
 
 	/* Update the head to point to the new first element */
 	*head = current;
+}
+
+/**
+ * pchar - prints the char at the head of the stack/queue.
+ * @head: A pointer to the head of the stack/queue.
+ * @l: The current line number being executed.
+ */
+void pchar(stack_t **head, unsigned int l)
+{
+	int ascii_value;
+
+	if (*head == NULL)
+	{
+		fprintf(stderr, "L<%u>: can't pchar, stack empty\n", l);
+		exit(EXIT_FAILURE);
+	}
+
+	ascii_value = (*head)->n;
+
+	if (ascii_value < 0 || ascii_value > 127)
+	{
+		fprintf(stderr, "L<%u>: can't pchar, value out of range\n", l);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%c\n", (char)ascii_value);
 }

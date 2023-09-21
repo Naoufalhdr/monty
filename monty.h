@@ -56,8 +56,8 @@ void mul(stack_t **head, unsigned int l_num);
 void mod(stack_t **head, unsigned int l_num);
 
 /* Stack manipulations functions */
-void nop(stack_t **head, unsigned int l_num);
 void swap(stack_t **head, unsigned int l_num);
+void pchar(stack_t **head, unsigned int l);
 void pstr(stack_t **head, unsigned int l_num);
 void rotl(stack_t **head, unsigned int l_num);
 void rotr(stack_t **head, unsigned int l_num);
@@ -74,6 +74,7 @@ void execute_opcode(char *opcode, char *data, stack_t **head, unsigned int l);
 int _isdigit(char *str);
 void _stack(stack_t **head, unsigned int line_number);
 void _queue(stack_t **head, unsigned int line_number);
+void nop(stack_t **head, unsigned int l_num);
 
 
 #endif /* MONTY_H */

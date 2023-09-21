@@ -1,6 +1,17 @@
 #include "monty.h"
 
 /**
+ * nop - doesn't do anything.
+ * @head: A pointer to the head of the stack/queue.
+ * @l_num: The current line number being executed.
+ */
+void nop(stack_t **head, unsigned int l_num)
+{
+	(void) l_num;
+	(void) head;
+}
+
+/**
  * _isdigit - checks if a given string is an integer.
  * @str: the string to be tested.
  *
