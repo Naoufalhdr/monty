@@ -1,100 +1,140 @@
 #include "monty.h"
 
 /**
- * add - Adds the top two elements of the stack.
- * @top: A pointer to the top of the stack.
+ * add - Adds the top two elements of the stack/queue.
+ * @head: A pointer to the head of the stack/queue.
  * @l_num: The current line number being executed.
  */
-void add(stack_t **top, unsigned int l_num)
+void add(stack_t **head, unsigned int l_num)
 {
-	if (*top == NULL || (*top)->prev == NULL)
+	stack_t *last, *seconde_last;
+
+	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L<%u>: can't add, stack too short\n", l_num);
 		exit(EXIT_FAILURE);
 	}
 
-	(*top)->prev->n += (*top)->n;
-	pop(top, l_num);
+	last = *head;
+	seconde_last = last->next;
+
+	seconde_last->n += last->n;
+
+	*head = seconde_last;
+	seconde_last->prev = NULL;
+	free(last);
 }
 
 /**
- * sub -  subtracts the top element of the stack from
- *        the second top element of the stack.
- * @top: A pointer to the top of the stack.
+ * sub -  subtracts the top element of the stack/queue from the second top
+ *        element of the stack/queue.
+ * @head: A pointer to the head of the stack/queue.
  * @l_num: The current line number being executed.
  */
-void sub(stack_t **top, unsigned int l_num)
+void sub(stack_t **head, unsigned int l_num)
 {
-	if (*top == NULL || (*top)->prev == NULL)
+	stack_t *last, *seconde_last;
+
+	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L<%u>: can't sub, stack too short\n", l_num);
 		exit(EXIT_FAILURE);
 	}
 
-	(*top)->prev->n -= (*top)->n;
-	pop(top, l_num);
+	last = *head;
+	seconde_last = last->next;
+
+	seconde_last->n -= last->n;
+
+	*head = seconde_last;
+	seconde_last->prev = NULL;
+	free(last);
 }
 
 /**
- * divide - divides the second top element of the stack by
- *          the top element of the stack.
- * @top: A pointer to the top of the stack.
+ * divide - divides the second top element of the stack/queue by the top
+ *          element of the stack/queue.
+ * @head: A pointer to the head of the stack/queue.
  * @l_num: The current line number being executed.
  */
-void divide(stack_t **top, unsigned int l_num)
+void divide(stack_t **head, unsigned int l_num)
 {
-	if (*top == NULL || (*top)->prev == NULL)
+	stack_t *last, *seconde_last;
+
+	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L<%u>: can't div, stack too short\n", l_num);
 		exit(EXIT_FAILURE);
 	}
-	else if ((*top)->n == 0)
+	else if ((*head)->n == 0)
 	{
 		fprintf(stderr, "L<%u>: division by zero\n", l_num);
 		exit(EXIT_FAILURE);
 	}
 
-	(*top)->prev->n /= (*top)->n;
-	pop(top, l_num);
+	last = *head;
+	seconde_last = last->next;
+
+	seconde_last->n /= last->n;
+
+	*head = seconde_last;
+	seconde_last->prev = NULL;
+	free(last);
 }
 
 /**
- * mul - multiplies the second top element of the stack with
- *       the top element of the stack.
- * @top: A pointer to the top of the stack.
+ * mul - multiplies the second top element of the stack/queue with the top
+ *       element of the stack/queue.
+ * @head: A pointer to the head of the stack/queue.
  * @l_num: The current line number being executed.
  */
-void mul(stack_t **top, unsigned int l_num)
+void mul(stack_t **head, unsigned int l_num)
 {
-	if (*top == NULL || (*top)->prev == NULL)
+	stack_t *last, *seconde_last;
+
+	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L<%u>: can't mul, stack too short\n", l_num);
 		exit(EXIT_FAILURE);
 	}
 
-	(*top)->prev->n *= (*top)->n;
-	pop(top, l_num);
+	last = *head;
+	seconde_last = last->next;
+
+	seconde_last->n *= last->n;
+
+	*head = seconde_last;
+	seconde_last->prev = NULL;
+	free(last);
 }
 
 /**
- * mod - computes the rest of the division of the second top element of
- *       the stack by the top element of the stack.
- * @top: A pointer to the top of the stack.
+ * mod - computes the rest of the division of the second top element of the
+ *       stack/queue by the top element of the stack/queue.
+ * @head: A pointer to the head of the stack/queue.
  * @l_num: The current line number being executed.
  */
-void mod(stack_t **top, unsigned int l_num)
+void mod(stack_t **head, unsigned int l_num)
 {
-	if (*top == NULL || (*top)->prev == NULL)
+	stack_t *last, *seconde_last;
+
+	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L<%u>: can't mod, stack too short\n", l_num);
 		exit(EXIT_FAILURE);
 	}
-	else if ((*top)->n == 0)
+	else if ((*head)->n == 0)
 	{
 		fprintf(stderr, "L<%u>: division by zero\n", l_num);
 		exit(EXIT_FAILURE);
 	}
 
-	(*top)->prev->n %= (*top)->n;
-	pop(top, l_num);
+	last = *head;
+	seconde_last = last->next;
+
+	seconde_last->n %= last->n;
+
+	*head = seconde_last;
+	seconde_last->prev = NULL;
+	free(last);
 }

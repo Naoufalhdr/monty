@@ -42,38 +42,30 @@ typedef struct instruction_s
 } instruction_t;
 
 /* Stack operations functions */
-void push(stack_t **head, unsigned int line_number, int data);
-void pall(stack_t **head, unsigned int line_number);
-void free_stack(stack_t **head);
-void pint(stack_t **head, unsigned int line_num);
-void pop(stack_t **head, unsigned int line_num);
+void push(stack_t **top, unsigned int line_number, int data);
+void pall(stack_t **top, unsigned int line_number);
+void free_stack(stack_t **top);
+void pint(stack_t **top, unsigned int line_num);
+void pop(stack_t **top, unsigned int line_num);
 
 /* Stack calculations functions */
-void add(stack_t **head, unsigned int l_num);
-void sub(stack_t **head, unsigned int l_num);
-void divide(stack_t **head, unsigned int l_num);
-void mul(stack_t **head, unsigned int l_num);
-void mod(stack_t **head, unsigned int l_num);
+void add(stack_t **top, unsigned int l_num);
+void sub(stack_t **top, unsigned int l_num);
+void divide(stack_t **top, unsigned int l_num);
+void mul(stack_t **top, unsigned int l_num);
+void mod(stack_t **top, unsigned int l_num);
 
 /* Stack manipulations functions */
-void nop(stack_t **head, unsigned int l_num);
-void swap(stack_t **head, unsigned int l_num);
-void pstr(stack_t **head, unsigned int l_num);
-void rotl(stack_t **head, unsigned int l_num);
-void rotr(stack_t **head, unsigned int l_num);
-
-/* Linked lists operations */
-void add_node_begin(stack_t **head, int data);
-void add_node_end(stack_t **head, int data);
-
+void nop(stack_t **top, unsigned int l_num);
+void swap(stack_t **top, unsigned int l_num);
+void pstr(stack_t **top, unsigned int l_num);
+void rotl(stack_t **top, unsigned int l_num);
+void rotr(stack_t **top, unsigned int l_num);
 
 /* Execute */
-void execute_opcode(char *opcode, char *data, stack_t **head, unsigned int l);
+void execute_opcode(char *opcode, char *data, stack_t **top, unsigned int l);
 
 /* helpers */
 int _isdigit(char *str);
-void _stack(stack_t **head, unsigned int line_number);
-void _queue(stack_t **head, unsigned int line_number);
-
 
 #endif /* MONTY_H */

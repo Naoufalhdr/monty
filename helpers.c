@@ -23,3 +23,28 @@ int _isdigit(char *str)
 
 	return (1);
 }
+/**
+ * _stack - Sets the execution mode to "stack".
+ * @head: a double pointer to the stack/queue data structure (not used).
+ * @line_number: The current line number being executed.
+ */
+void _stack(stack_t **head, unsigned int line_number)
+{
+	(void) head;
+	(void) line_number;
+
+	mode = "stack";
+}
+
+/**
+ * _queue - Sets the execution mode to "queue".
+ * @head: a double pointer to the stack/queue data structure (not used).
+ * @line_number: The current line number being executed.
+ */
+void _queue(stack_t **head, unsigned int line_number)
+{
+	(void) head;
+	(void) line_number;
+
+	mode = "queue";
+}

@@ -1,114 +1,97 @@
 #include "monty.h"
 
 /**
- * push - pushes an element onto the stack.
- * @top: a pointer to the top of the stack.
+ * push - pushes an element onto the stack/queue.
+ * @head: a pointer to the head of the stack/queue.
  * @line_number: the current line number being executed.
- * @data: the integer to push onto the stack.
+ * @data: the integer to push onto the stack/queue.
  */
-void push(stack_t **top, unsigned int line_number, int data)
+void push(stack_t **head, unsigned int line_number, int data)
 {
-	stack_t *new_node;
 	(void) line_number;
 
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+	/* Stack mode (LIFO) */
+	if (strcmp(mode, "stack") == 0)
+		add_node_begin(head, data);
 
-	new_node->n = data;
-	new_node->next = NULL;
-
-	new_node->next = NULL;
-
-	if (*top == NULL)
-	{
-		*top = new_node;
-		new_node->prev = NULL;
-		return;
-	}
-
-	(*top)->next = new_node;
-	new_node->prev = *top;
-	*top = new_node;
+	/* Queue mode (FIFO) */
+	else if (strcmp(mode, "queue") == 0)
+		add_node_end(head, data);
 }
 
 /**
- * pall - prints all elements of the stack.
- * @top: a pointer to the top of the stack.
+ * pall - prints all elements of the stack/queue.
+ * @head: a pointer to the head of the stack/queue.
  * @line_number: is the current line number being executed.
  */
-void pall(stack_t **top, unsigned int line_number)
+void pall(stack_t **head, unsigned int line_number)
 {
 	stack_t *current;
 	(void) line_number;
 
-	if (*top == NULL || line_number == 0)
+	if (*head == NULL || line_number == 0)
 		return;
 
-	current = *top;
+	current = *head;
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
-		current = current->prev;
+		current = current->next;
 	}
 }
 
 /**
- * pint - prints the value at the top of the stack.
- * @top: a pointer to the top of the stack.
+ * pint - prints the value at the head of the stack/queue.
+ * @head: a pointer to the head of the stack/queue.
  * @line_num: is the current line number being executed.
  */
-void pint(stack_t **top, unsigned int line_num)
+void pint(stack_t **head, unsigned int line_num)
 {
-	if (*top == NULL)
+	if (*head == NULL)
 	{
 		fprintf(stderr, "L<%u>: can't pint, stack empty\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
-	printf("%d\n", (*top)->n);
+	printf("%d\n", (*head)->n);
 }
 
 /**
- * pop - removes the top element of the stack.
- * @top: a pointer to the top of the stack.
+ * pop - removes the head element of the stack/queue.
+ * @head: a pointer to the head of the stack/queue.
  * @line_num: is the current line number being executed.
  */
-void pop(stack_t **top, unsigned int line_num)
+void pop(stack_t **head, unsigned int line_num)
 {
-	stack_t *current;
+	stack_t *temp;
 
-	if (*top == NULL)
+	if (*head == NULL)
 	{
 		fprintf(stderr, "L<%u>: can't pop an empty stack\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
-	current = *top;
-	*top = (*top)->prev;
+	temp = *head;
+	*head = (*head)->next;
+	if (*head != NULL)
+		(*head)->prev = NULL;
 
-	free(current);
+	free(temp);
 }
 
 /**
- * free_stack - Frees a stack of nodes.
- * @top: A pointer to the top (head) of the stack.
+ * free_stack - Frees a stack/queue of nodes.
+ * @head: A pointer to the head of the stack/queue.
  */
-void free_stack(stack_t **top)
+void free_stack(stack_t **head)
 {
-	stack_t *current;
+	stack_t *current, *temp;
 
-	if (top == NULL)
-		return;
-
-	current = *top;
+	current = *head;
 	while (current != NULL)
 	{
-		current = current->prev;
-		free(*top);
-		*top = current;
+		temp = current;
+		current = current->next;
+		free(temp);
 	}
 }

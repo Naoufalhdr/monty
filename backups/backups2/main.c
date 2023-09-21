@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	FILE *file;
 	char *line = NULL, *opcode, *data;
 	size_t line_size = 0, line_number = 0;
-	stack_t *head = NULL;
+	stack_t *top = NULL;
 
 	if (argc != 2)
 	{
@@ -41,14 +41,14 @@ int main(int argc, char *argv[])
 
 		if (!opcode || opcode[0] == '#')
 			continue; /* Empty line */
-		execute_opcode(opcode, data, &head, line_number);
+		execute_opcode(opcode, data, &top, line_number);
 	}
 
 	/* Close the monty file */
 	fclose(file);
 
 	free(line);
-	free_stack(&head);
+	free_stack(&top);
 
 	return (EXIT_SUCCESS);
 }
