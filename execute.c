@@ -20,7 +20,7 @@ void execute_opcode(char *opcode, char *data, stack_t **head, unsigned int l)
 	};
 
 	/* Check if the opcode is push command */
-	if (strncmp(opcode, "push", strlen("push")) == 0)
+	if (strcmp(opcode, "push") == 0)
 	{
 		/* Validate that 'data' is provided and is a valid integer */
 		if (data == NULL || strlen(data) == 0 || !_isdigit(data))

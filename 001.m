@@ -1,2 +1,4 @@
-push 72
-pchar
+push 1
+pushe 2
+pall
+
