@@ -11,7 +11,7 @@ void swap(stack_t **head, unsigned int l_num)
 
 	if (*head == NULL || (*head)->next == NULL)
 	{
-		fprintf(stderr, "L<%u>: can't swap, stack too short\n", l_num);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", l_num);
 		exit(EXIT_FAILURE);
 	}
 
@@ -119,7 +119,7 @@ void pchar(stack_t **head, unsigned int l)
 
 	if (*head == NULL)
 	{
-		fprintf(stderr, "L<%u>: can't pchar, stack empty\n", l);
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", l);
 		exit(EXIT_FAILURE);
 	}
 
@@ -127,7 +127,7 @@ void pchar(stack_t **head, unsigned int l)
 
 	if (ascii_value < 0 || ascii_value > 127)
 	{
-		fprintf(stderr, "L<%u>: can't pchar, value out of range\n", l);
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", l);
 		exit(EXIT_FAILURE);
 	}
 
