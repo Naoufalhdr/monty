@@ -44,6 +44,6 @@ void execute_opcode(char *opcode, char *data, stack_t **head, unsigned int l)
 	}
 
 	/* Handle error: Opcode not found */
-	fprintf(stderr, "Error: Unknown opcode %s at line %u\n", opcode, l);
+	fprintf(stderr, "L%u: unknown instruction %s\n", l, opcode);
 	exit(EXIT_FAILURE);
 }
